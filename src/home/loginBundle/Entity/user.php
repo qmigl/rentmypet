@@ -1,6 +1,6 @@
 <?php
 
-namespace home\loginBundle\Entity\home;
+namespace home\loginBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -302,61 +302,10 @@ class user
         return $this->rights;
     }
 
-    public function loadUser($idUser = 0)
-    {
-        $user = null;
-        $id = $this->$id;
-
-        if($idUser != 0) $id = $idUser;
-
-        $error = null;
-        $repository = $this->getDoctrine()->getRepository('loginBundle:user');
-        $qb = $repository->createQueryBuilder('p');
-        $qb->where('p.id = :id')->setParameters(array('id' => $id));
-
-        try { $user= $qb->getQuery()->getResult(); }
-        catch(\Exception $e){ $error = "une erreur est survenue " . $e->getMessage(); }
-
-        // Passage de paramètres à ma vue index.html.twig
-        return array('error' => $error, "user" => $user);
-    }
-
-    public function setUser($idUser = 0)
-    {
-        $error = null;
-        $id = $this->$id;
-
-        if($idUser != 0) $id = $idUser;
-
-        $user = loadUser($id);
-
-        try {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-        }catch(\Exception $e){
-            $error = "Une erreur est survenue : " . $e->getMessage();
+    public function comparePass($pass){
+        if ($this->password == $pass){
+            return true;
         }
-
-        // Passage de paramètres à ma vue index.html.twig
-        return array('error' => $error, "user" => $user);
+        return false;
     }
-
-    public function getUserByEmail($email)
-    {
-        $error = null;
-        $user = null;
-
-        $repository = $this->getDoctrine()->getRepository('loginBundle:User');
-        $qb = $repository->createQueryBuilder('p');
-        $qb->where('p.email = :email')->setParameters(array('email' => $email));
-
-        try { $user= $qb->getQuery()->getResult(); }
-        catch(\Exception $e){ $error = "une erreur est survenue " . $e->getMessage(); }
-
-        // Passage de paramètres à ma vue index.html.twig
-        return array('error' => $error, "user" => $user);
-    }
-
-
 }
