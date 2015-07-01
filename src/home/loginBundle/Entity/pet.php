@@ -181,4 +181,44 @@ class pet
     {
         return $this->sex;
     }
+
+    public function loadPet($idPet = 0)
+    {
+        $pet = null;
+        $id = $this->$id;
+
+        if($idPet != 0) $id = $idPet;
+
+        $error = null;
+        $repository = $this->getDoctrine()->getRepository('loginBundle:pet');
+        $qb = $repository->createQueryBuilder('p');
+        $qb->where('p.id = :id')->setParameters(array('id' => $id));
+
+        try { $pet= $qb->getQuery()->getResult(); }
+        catch(\Exception $e){ $error = "une erreur est survenue " . $e->getMessage(); }
+
+        // Passage de paramètres à ma vue index.html.twig
+        return array('error' => $error, "pet" => $pet);
+    }
+
+    public function setPet($idPet = 0)
+    {
+        $error = null;
+        $id = $this->$id;
+
+        if($idPet != 0) $id = $idPet;
+
+        $pet = loadPet($id);
+
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($pet);
+            $em->flush();
+        }catch(\Exception $e){
+            $error = "Une erreur est survenue : " . $e->getMessage();
+        }
+
+        // Passage de paramètres à ma vue index.html.twig
+        return array('error' => $error, "pet" => $pet);
+    }
 }
