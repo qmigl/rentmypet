@@ -310,7 +310,7 @@ class user
         if($idUser != 0) $id = $idUser;
 
         $error = null;
-        $repository = $this->getDoctrine()->getRepository('loginBundle:User');
+        $repository = $this->getDoctrine()->getRepository('loginBundle:user');
         $qb = $repository->createQueryBuilder('p');
         $qb->where('p.id = :id')->setParameters(array('id' => $id));
 
@@ -357,4 +357,6 @@ class user
         // Passage de paramètres à ma vue index.html.twig
         return array('error' => $error, "user" => $user);
     }
+
+
 }
