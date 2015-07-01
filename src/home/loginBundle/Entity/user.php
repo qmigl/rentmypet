@@ -1,6 +1,6 @@
 <?php
 
-namespace home\loginBundle\Entity\home;
+namespace home\loginBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -300,5 +300,12 @@ class user
     public function getRights()
     {
         return $this->rights;
+    }
+
+    public function comparePass($pass){
+        if ($this->password == $pass){
+            return true;
+        }
+        return false;
     }
 }

@@ -1,1 +1,9 @@
-Hello {{ name }}!
+{% extends 'loginBundle::layout.html.twig' %}
+
+{% block title %}RentMyPet - Welcome{% endblock %}
+
+{% block content %}
+
+<h1 class="title">Hello {{ name }}!</h1>
+
+{% endblock %}
