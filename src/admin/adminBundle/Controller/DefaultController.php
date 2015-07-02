@@ -43,7 +43,11 @@ class DefaultController extends Controller
      */
     public function modifierCompteAction($idUser)
     {
-        $user = $this->getDoctrine()->getRepository('loginBundle:user')->find($idUser);
+        if (count($_POST) > 0)
+        {
+            
+        }
+        else $user = $this->getDoctrine()->getRepository('loginBundle:user')->find($idUser);
 
         if (null == $user) $this->render("adminBundle:default:gestionComptes.html.twig",  array('error' => 'idUser inexistant'));
         return array('error' => '', "user" => $user);

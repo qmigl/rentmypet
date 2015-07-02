@@ -1,4 +1,68 @@
-<h1>Modification du compte {{ user.GetEmail() }}</h1>
+{% extends 'loginBundle::layout.html.twig' %}
+
+{% block title %}RentMyPet - Inscription{% endblock %}
+
+{% block content %}
+    <h1 class="title">Modification du compte {{ user.GetEmail() }}</h1>
 
 
-<a href="/admin/gestionComptes/" alt="" >Retour</a>
+    <form action="/modifierUser/{user.getID}/" method="post" id="login">
+        <div>
+            <label for="email">Adresse mail</label>
+            <input type="text"  name="_username" required="" value ="{{ user.getEmail }}"/>
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="_password" required="" value ="{{ user.getPassword }}"/>
+        </div>
+
+        <div>
+            <label for="password">Retaper le Password</label>
+            <input type="password" name="_password2" required="" value ="{{ user.getPassword }}"/>
+        </div>
+
+        <div>
+            <label for="text">Nom</label>
+            <input type="text"  name="_lastName" required="" value ="{{ user.getLastName }}"/>
+        </div>
+
+        <div>
+            <label for="text">Prénom</label>
+            <input type="text" name="_firstName" required="" value ="{{ user.getFirstName }}"/>
+        </div>
+
+        <div>
+            <label for="text">Téléphone</label>
+            <input type="text" name="_tel" required="" value ="{{ user.getPhone }}"/>
+        </div>
+
+        <div>
+            <label for="email">Département</label>
+            <input type="integer"  name="_departement" required="" value ="{{ user.getIdLocation }}"/>
+        </div>
+
+        <div>
+            <label for="password">Ville</label>
+            <input type="text" name="_city" required="" value ="{{ user.getCity }}"/>
+        </div>
+
+        <div>
+            <label for="password">Adresse</label>
+            <input type="text" name="_adress" required="" value ="{{ user.getAdress }}"/>
+        </div>
+
+        <div>
+            <button type="submit" class="sf-button">
+                <span class="btn-bg">Valider</span>
+            </button>
+        </div>
+
+
+        <h1>{{ error }}</h1>
+
+    </form>
+
+    <a href="/admin/gestionComptes/" alt="" >Retour</a>
+
+{% endblock %}
