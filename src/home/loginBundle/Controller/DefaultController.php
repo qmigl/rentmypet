@@ -88,27 +88,29 @@ class DefaultController extends Controller
         $error = null;
 
         if (count($_POST)>7){
-        // Création / récupération d'une entité.
-        $user = new Entity\user();
-        $user->setEmail($_POST["_username"]);
-        $user->setPassword($_POST["_password"]);
-        $user->setLastName($_POST["_lastName"]);
-        $user->setFirstName($_POST["_firstName"]);
-        $user->setPhone($_POST["_tel"]);
-        $user->setIdLocation($_POST["_departement"]);
-        $user->setCity($_POST["_city"]);
-        $user->setAdress($_POST["_adress"]);
-        $user->setRights(2);
+            // Création / récupération d'une entité.
+            $user = new Entity\user();
+            $user->setEmail($_POST["_username"]);
+            $user->setPassword($_POST["_password"]);
+            $user->setLastName($_POST["_lastName"]);
+            $user->setFirstName($_POST["_firstName"]);
+            $user->setPhone($_POST["_tel"]);
+            $user->setIdLocation($_POST["_departement"]);
+            $user->setCity($_POST["_city"]);
+            $user->setAdress($_POST["_adress"]);
+            $user->setRights(2);
 
-        try {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-            $error = "Votre compte à bien été créé";
-        } catch (\Exception $e) {
-            $error = "une erreur est survenue :" . $e->getMessage();
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                $error = "Votre compte à bien été créé";
+            } catch (\Exception $e) {
+                $error = "une erreur est survenue :" . $e->getMessage();
+            }
+            return $this->render("loginBundle:Secured:connect.html.twig", array('user' => $user) );
         }
-        }
+
         // Passage de paramètres à ma vue index.html.twig
         return array('error' => $error);
     }
