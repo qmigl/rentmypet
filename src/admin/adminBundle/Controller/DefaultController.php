@@ -14,6 +14,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+
         return array('name' => "toto");
     }
 
@@ -22,6 +23,42 @@ class DefaultController extends Controller
      * @Template()
      */
     public function adminUserAction($userSpecific)
+    {
+        return array('name' => $userSpecific);
+    }
+
+    /**
+     * @Route("/admin/gestionComptes")
+     * @Template()
+     */
+    public function gestionComptesAction($userSpecific)
+    {
+        return array('name' => $userSpecific);
+    }
+
+    /**
+     * @Route("/admin/creerCompte")
+     * @Template()
+     */
+    public function creerCompteAction($userSpecific)
+    {
+        return array('name' => $userSpecific);
+    }
+
+    /**
+     * @Route("/admin/gestionGrp")
+     * @Template()
+     */
+    public function gestionGrpAction($userSpecific)
+    {
+        return array('name' => $userSpecific);
+    }
+
+    /**
+     * @Route("/admin/creerGrp")
+     * @Template()
+     */
+    public function creerGrpAction($userSpecific)
     {
         return array('name' => $userSpecific);
     }

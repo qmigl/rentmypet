@@ -42,7 +42,6 @@ class DefaultController extends Controller
             $repository = $this->getDoctrine()
                 ->getRepository('loginBundle:user');
 
-
             $qb = $repository->createQueryBuilder('u');
             $qb->where('u.email = :email')
             ->setParameters(array('email' => $_POST["_username"]));
