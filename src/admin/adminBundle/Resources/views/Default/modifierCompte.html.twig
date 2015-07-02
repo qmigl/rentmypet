@@ -46,42 +46,42 @@
                 <fieldset>
                     <label class="email">
                         <span class="title">Email</span>
-                        <input type="text"  name="_username" required=""/>
+                        <input type="text"  name="_username" required="" value="{{ user.email }}"/>
                         <br class="clear">
                     </label>
                     <label class="password">
                         <span class="title">Password</span>
-                        <input type="password" name="_password" required=""/>
+                        <input type="password" name="_password" required="" value="{{ user.password }}"/>
                         <br class="clear">
                     </label>
                     <label class="lastName">
                         <span class="title">Nom</span>
-                        <input type="text"  name="_lastName" required=""/>
+                        <input type="text"  name="_lastName" required="" value="{{ user.lastName }}"/>
                         <br class="clear">
                     </label>
                     <label class="firstName">
                         <span class="title">Prénom</span>
-                        <input type="text"  name="_firstName" required=""/>
+                        <input type="text"  name="_firstName" required="" value="{{ user.firstName }}"/>
                         <br class="clear">
                     </label>
                     <label class="phone">
                         <span class="title">Téléphone</span>
-                        <input type="text" name="_tel" required=""/>
+                        <input type="text" name="_tel" required="" value="{{ user.phone }}"/>
                         <br class="clear">
                     </label>
                     <label class="departement">
                         <span class="title">Département (numéro)</span>
-                        <input type="integer"  name="_departement" required=""/>
+                        <input type="integer"  name="_departement" required="" value="{{ user.idLocation }}"/>
                         <br class="clear">
                     </label>
                     <label class="ville">
                         <span class="title">Ville</span>
-                        <input type="text" name="_city" required=""/>
+                        <input type="text" name="_city" required="" value="{{ user.city }}"/>
                         <br class="clear">
                     </label>
                     <label class="adresse">
                         <span class="title">Adresse</span>
-                        <input type="text" name="_adress" required=""/>
+                        <input type="text" name="_adress" required="" value="{{ user.adress }}"/>
                         <br class="clear">
                     </label>
                     <div class="clear"></div>
@@ -95,7 +95,7 @@
             </form>
 </p>
 
-            <p><a href="/admin/" alt="" >Retour</a></p>
+            <p><a href="/admin/gestionComptes/" alt="" >Retour</a></p>
 
             </body>
 
