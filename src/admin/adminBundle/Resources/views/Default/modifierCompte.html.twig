@@ -3,53 +3,53 @@
 {% block title %}RentMyPet - Inscription{% endblock %}
 
 {% block content %}
-    <h1 class="title">Modification du compte {{ user.GetEmail() }}</h1>
+    <h1 class="title">Modification du compte {{ user.email }}</h1>
 
 
     <form action="/modifierUser/{user.getID}/" method="post" id="login">
         <div>
             <label for="email">Adresse mail</label>
-            <input type="text"  name="_username" required="" value ="{{ user.getEmail }}"/>
+            <input type="text"  name="_username" required="" value ="{{ user.email }}"/>
         </div>
 
         <div>
             <label for="password">Password</label>
-            <input type="password" name="_password" required="" value ="{{ user.getPassword }}"/>
+            <input type="password" name="_password" required="" value ="{{ user.password }}"/>
         </div>
 
         <div>
             <label for="password">Retaper le Password</label>
-            <input type="password" name="_password2" required="" value ="{{ user.getPassword }}"/>
+            <input type="password" name="_password2" required="" value ="{{ user.password }}"/>
         </div>
 
         <div>
             <label for="text">Nom</label>
-            <input type="text"  name="_lastName" required="" value ="{{ user.getLastName }}"/>
+            <input type="text"  name="_lastName" required="" value ="{{ user.lastName }}"/>
         </div>
 
         <div>
             <label for="text">Prénom</label>
-            <input type="text" name="_firstName" required="" value ="{{ user.getFirstName }}"/>
+            <input type="text" name="_firstName" required="" value ="{{ user.firstName }}"/>
         </div>
 
         <div>
             <label for="text">Téléphone</label>
-            <input type="text" name="_tel" required="" value ="{{ user.getPhone }}"/>
+            <input type="text" name="_tel" required="" value ="{{ user.phone }}"/>
         </div>
 
         <div>
             <label for="email">Département</label>
-            <input type="integer"  name="_departement" required="" value ="{{ user.getIdLocation }}"/>
+            <input type="integer"  name="_departement" required="" value ="{{ user.idLocation }}"/>
         </div>
 
         <div>
             <label for="password">Ville</label>
-            <input type="text" name="_city" required="" value ="{{ user.getCity }}"/>
+            <input type="text" name="_city" required="" value ="{{ user.city }}"/>
         </div>
 
         <div>
             <label for="password">Adresse</label>
-            <input type="text" name="_adress" required="" value ="{{ user.getAdress }}"/>
+            <input type="text" name="_adress" required="" value ="{{ user.adress }}"/>
         </div>
 
         <div>

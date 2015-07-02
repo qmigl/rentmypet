@@ -43,12 +43,27 @@ class DefaultController extends Controller
      */
     public function modifierCompteAction($idUser)
     {
+        $user = $this->getDoctrine()->getRepository('loginBundle:user')->find($idUser);
+
         if (count($_POST) > 0)
         {
-            
-        }
-        else $user = $this->getDoctrine()->getRepository('loginBundle:user')->find($idUser);
+            $user->setEmail($_POST["_username"]);
+            $user->setPassword($_POST["_password"]);
+            $user->setLastName($_POST["_lastName"]);
+            $user->setFirstName($_POST["_firstName"]);
+            $user->setPhone($_POST["_tel"]);
+            $user->setIdLocation($_POST["_departement"]);
+            $user->setCity($_POST["_city"]);
+            $user->setAdress($_POST["_adress"]);
 
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+            }catch(\Exception $e){
+                $error = "Une erreur est survenue : " . $e->getMessage();
+            }
+        }
         if (null == $user) $this->render("adminBundle:default:gestionComptes.html.twig",  array('error' => 'idUser inexistant'));
         return array('error' => '', "user" => $user);
     }
