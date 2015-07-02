@@ -127,7 +127,7 @@ class DefaultController extends Controller
             } catch (\Exception $e) {
                 $error = "une erreur est survenue :" . $e->getMessage();
             }
-            return $this->render("loginBundle:Secured:connect.html.twig", array('user' => $user) );
+            return $this->render("loginBundle:Secured:index_secured.html.twig", array('user' => $user) );
         }
 
         // Passage de paramètres à ma vue index.html.twig
