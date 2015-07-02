@@ -309,6 +309,7 @@ class user
         return false;
     }
 
+<<<<<<< HEAD
     public function loadUser($idUser = 0)
     {
         $user = null;
@@ -348,4 +349,6 @@ class user
         // Passage de paramètres à ma vue index.html.twig
         return array('error' => $error, "user" => $user);
     }
+=======
+>>>>>>> 8547994f78cae37140745bb974ced9b0d88ca7be
 }

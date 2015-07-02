@@ -1,0 +1,64 @@
+{% extends 'loginBundle::layout.html.twig' %}
+
+{% block title %}RentMyPet - Inscription{% endblock %}
+
+{% block content %}
+    <h1 class="title">Inscription</h1>
+
+
+    <form action="/subscribe" method="post" id="login">
+        <div>
+            <label for="email">Adresse mail</label>
+            <input type="text"  name="_username" required=""/>
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="_password" required=""/>
+        </div>
+
+        <div>
+            <label for="password">Retaper le Password</label>
+            <input type="password" name="_password2" required=""/>
+        </div>
+
+        <div>
+            <label for="text">Nom</label>
+            <input type="text"  name="_lastName" required=""/>
+        </div>
+
+        <div>
+            <label for="text">Prénom</label>
+            <input type="text" name="_firstName" required=""/>
+        </div>
+
+        <div>
+            <label for="text">Téléphone</label>
+            <input type="text" name="_tel" required=""/>
+        </div>
+
+        <div>
+            <label for="email">Département</label>
+            <input type="integer"  name="_departement" required=""/>
+        </div>
+
+        <div>
+            <label for="password">Ville</label>
+            <input type="text" name="_city" required=""/>
+        </div>
+
+        <div>
+            <label for="password">Adresse</label>
+            <input type="text" name="_adress" required=""/>
+        </div>
+
+        <div>
+            <button type="submit" class="sf-button">
+                <span class="btn-bg">Valider</span>
+            </button>
+        </div>
+
+<h1>{{ error }}</h1>
+
+    </form>
+{% endblock %}
