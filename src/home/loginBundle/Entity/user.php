@@ -308,4 +308,5 @@ class user
         }
         return false;
     }
+
 }
