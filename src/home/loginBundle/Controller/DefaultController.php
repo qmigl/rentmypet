@@ -82,7 +82,7 @@ class DefaultController extends Controller
      * @Route("/subscribe")
      * @Template()
      */
-    public function subscribeAction()
+    public function subscribeAction($rights = 2)
     {
 
         $error = null;
@@ -98,7 +98,7 @@ class DefaultController extends Controller
         $user->setIdLocation($_POST["_departement"]);
         $user->setCity($_POST["_city"]);
         $user->setAdress($_POST["_adress"]);
-        $user->setRights(2);
+        $user->setRights($rights);
 
         try {
             $em = $this->getDoctrine()->getManager();
