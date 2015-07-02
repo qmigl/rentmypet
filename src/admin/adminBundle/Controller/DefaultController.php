@@ -43,6 +43,7 @@ class DefaultController extends Controller
      */
     public function modifierCompteAction($idUser)
     {
+        $error = '';
         $user = $this->getDoctrine()->getRepository('loginBundle:user')->find($idUser);
 
         if (count($_POST) > 0)
@@ -60,11 +61,12 @@ class DefaultController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
+                $error = "Modifications sauvegardées.";
             }catch(\Exception $e){
                 $error = "Une erreur est survenue : " . $e->getMessage();
             }
         }
         if (null == $user) $this->render("adminBundle:default:gestionComptes.html.twig",  array('error' => 'idUser inexistant'));
-        return array('error' => '', "user" => $user);
+        return array('error' => $error, "user" => $user);
     }
 }

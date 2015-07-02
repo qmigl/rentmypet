@@ -1,17 +1,68 @@
-<body>
+{% extends 'loginBundle::layout.html.twig' %}
 
-<h1>Section administration</h1>
+{% block title %}RentMyPet - Admin{% endblock %}
 
-    <table>
-        <tr>
-            <td><a href="/admin/gestionComptes/" title="Gerer les comptes">Gestion des comptes</a></td>
-        </tr>
+{% block content %}
 
-        <tr>
-            <td><a href="/subscribe/admin" title="Creer un compte">Creer compte ADMIN</a></td>
-        </tr>
+    {% block header %}
 
-    </table>
+        <header>
+            <div class="container_12" >
+                <div class="grid_12" >
+                    <h1><a href="/"><img src="bundles/rentmypet/images/header.png"></a></h1>
+                </div>
+            </div>
+            <nav>
+                <div class="container_12">
+                    <div class="grid_12">
+                        <ul class="sf-menu">
+                            <li class="current"><a href="index.html">Acceuil</a></li>
+                            <li><a href="index-1.html">Location</a>
+                                <ul>
+                                    <li><a href="#">OUR HISTORY</a></li>
+                                    <li><a href="#">OUR TEAM</a></li>
+                                    <li><a href="#">FAQs</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="index-2.html">PROJECTS</a></li>
+                            <li><a href="/login">S'identifier</a></li>
+                            <li><a href="/subscribe">S'enregistrer</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    {% endblock %}
 
-<a href="/admin/" alt="" >Retour</a>
-</body>
+    <div id="content">
+        <div class="container_12">
+
+            <div class="grid_12">
+                <h2 class="indent-2">Section administration</h2>
+            </div>
+
+            <body>
+
+            <table>
+                <tr>
+                    <td><a href="/admin/gestionComptes/" title="Gerer les comptes">Gestion des comptes</a></td>
+                </tr>
+
+                <tr>
+                    <td><a href="/subscribe/admin" title="Creer un compte">Creer compte ADMIN</a></td>
+                </tr>
+
+            </table>
+
+            <a href="/admin/" alt="" >Retour</a>
+            </body>
+
+
+            <h1>{{ error }}</h1>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
