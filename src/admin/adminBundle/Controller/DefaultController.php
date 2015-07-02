@@ -5,6 +5,7 @@ namespace admin\adminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use home\loginBundle\Entity;
 
 class DefaultController extends Controller
 {
@@ -14,52 +15,47 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-
-        return array('name' => "toto");
-    }
-
-    /**
-     * @Route("/admin/{userSpecific}")
-     * @Template()
-     */
-    public function adminUserAction($userSpecific)
-    {
-        return array('name' => $userSpecific);
+        return array();
     }
 
     /**
      * @Route("/admin/gestionComptes")
      * @Template()
      */
-    public function gestionComptesAction($userSpecific)
+    public function gestionComptesAction()
     {
-        return array('name' => $userSpecific);
+        $repository = $this->getDoctrine()->getRepository('loginBundle:user');
+        $allUsers = null;
+        try{
+            $allUsers = $repository->findAll();
+        }
+        catch(\Exception $e)
+        {
+            $error = "Une erreur est survenue " . $e->getMessage();
+        }
+        return array('error' => $error, 'allUsers' => $allUsers);
     }
 
     /**
      * @Route("/admin/creerCompte")
      * @Template()
      */
-    public function creerCompteAction($userSpecific)
+    public function creerCompteAction()
     {
-        return array('name' => $userSpecific);
+        return array();
     }
 
     /**
-     * @Route("/admin/gestionGrp")
+     * @Route("/admin/creerCompte")
      * @Template()
      */
-    public function gestionGrpAction($userSpecific)
+    public function modifierCompteAction($idUser)
     {
-        return array('name' => $userSpecific);
-    }
+        $user = new user();
+        $user= $user>loadUser($idUser);
 
-    /**
-     * @Route("/admin/creerGrp")
-     * @Template()
-     */
-    public function creerGrpAction($userSpecific)
-    {
-        return array('name' => $userSpecific);
+        if (null == $user)
+            $this->render("adminBundle:default:gestionComptes.html.twig",  array("error" => "idUser inexistant"));
+        return array("user" => $user);
     }
 }
