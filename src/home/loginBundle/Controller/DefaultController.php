@@ -43,6 +43,7 @@ class DefaultController extends Controller
     {
 
         $error = "";
+        //on vérifie que les deux champs sont rempli en post
         if (isset($_POST["_username"]) && isset($_POST["_password"])) {
             $repository = $this->getDoctrine()
                 ->getRepository('loginBundle:user');
@@ -51,19 +52,17 @@ class DefaultController extends Controller
             $qb->where('u.email = :email')
                 ->setParameters(array('email' => $_POST["_username"]));
             $user = null;
-            /*
-            $user = $qb->getQuery()->getResult()[0];
-            */
+
             $array = $qb->getQuery()->getResult();
             if (count($array) > 0) {
                 $user = $qb->getQuery()->getResult()[0];
             }
 
-
+            //si $user est null c'est que l'email est inconnu
             if (null == $user) {
                 return $this->render("loginBundle:default:login.html.twig", array('error' => "Compte inconnu, veuillez vous enregistrer"));
             } else {
-
+            //si l'email est connu on vérifie que le password en post correspond à celui en base
                 if ($user->comparePass($_POST["_password"])) {
                     $session = new Session();
                     $session->set('name', $_POST["_username"]);
@@ -85,7 +84,7 @@ class DefaultController extends Controller
     public function subscribeAction($rights = 2)
     {
         $error = null;
-
+        //on insert les valeurs en post dans l'objet $user
         if (count($_POST) > 7) {
             // Création / récupération d'une entité.
             $user = new Entity\user();
