@@ -1,0 +1,25 @@
+{% extends 'loginBundle::layout.html.twig' %}
+
+{% block title %}RentMyPet - Welcome{% endblock %}
+
+{% block content %}
+    <h1 class="title">Login</h1>
+
+
+    <form action="/login" method="post" id="login">
+        <div>
+            <label for="email">Adresse mail</label>
+            <input type="text"  name="_username" />
+
+            <label for="password">Password</label>
+            <input type="password" name="_password" />
+
+            <button type="submit" class="sf-button">
+                <span class="btn-bg">Valider</span>
+            </button>
+        </div>
+
+
+
+    </form>
+{% endblock %}
