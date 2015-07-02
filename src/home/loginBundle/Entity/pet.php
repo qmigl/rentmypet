@@ -201,6 +201,7 @@ class pet
         return array('error' => $error, "pet" => $pet);
     }
 
+    /*
     public function setPet($idPet = 0)
     {
         $error = null;
@@ -221,4 +222,5 @@ class pet
         // Passage de paramètres à ma vue index.html.twig
         return array('error' => $error, "pet" => $pet);
     }
+    */
 }

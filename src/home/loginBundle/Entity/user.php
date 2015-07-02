@@ -2,7 +2,9 @@
 
 namespace home\loginBundle\Entity;
 
+use Doctrine\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * user
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class user
+class user extends Controller
 {
     /**
      * @var integer
@@ -308,47 +310,4 @@ class user
         }
         return false;
     }
-
-<<<<<<< HEAD
-    public function loadUser($idUser = 0)
-    {
-        $user = null;
-        $id = $this->$id;
-
-        if($idUser != 0) $id = $idUser;
-
-        $error = null;
-        $repository = $this->getDoctrine()->getRepository('loginBundle:user');
-        $qb = $repository->createQueryBuilder('p');
-        $qb->where('p.id = :id')->setParameters(array('id' => $id));
-
-        try { $user= $qb->getQuery()->getResult(); }
-        catch(\Exception $e){ $error = "une erreur est survenue " . $e->getMessage(); }
-
-        // Passage de paramètres à ma vue index.html.twig
-        return array('error' => $error, "user" => $user);
-    }
-
-    public function setUser($idUser = 0)
-    {
-        $error = null;
-        $id = $this->$id;
-
-        if($idUser != 0) $id = $idUser;
-
-        $user = loadUser($id);
-
-        try {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-        }catch(\Exception $e){
-            $error = "Une erreur est survenue : " . $e->getMessage();
-        }
-
-        // Passage de paramètres à ma vue index.html.twig
-        return array('error' => $error, "user" => $user);
-    }
-=======
->>>>>>> 8547994f78cae37140745bb974ced9b0d88ca7be
 }

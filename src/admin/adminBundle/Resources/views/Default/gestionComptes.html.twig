@@ -2,14 +2,13 @@
 
 <table>
     {% for user in allUsers %}
-
-    <?php
-    $href = "/admin/modifierCompte/" . $user=>getID();
-    echo $href;
-    ?>
-        {{ allUsers }}
-    <tr>
-        <td><a href=$href>$user=>getEmail()</a></td>
-    </tr>
+        <tr>
+            <td><a href="/admin/modifierCompte/{{ user.id }}/" alt="" >{{ user.email }}</a></td>
+        </tr>
     {% endfor %}
 </table>
+
+
+{{ error }}
+
+<a href="/admin/" alt="" >Retour</a>

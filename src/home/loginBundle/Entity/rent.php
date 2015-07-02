@@ -181,44 +181,4 @@ class rent
     {
         return $this->petId;
     }
-
-    public function loadRent($idRent = 0)
-    {
-        $rent = null;
-        $id = $this->$id;
-
-        if($idRent != 0) $id = $idRent;
-
-        $error = null;
-        $repository = $this->getDoctrine()->getRepository('loginBundle:rent');
-        $qb = $repository->createQueryBuilder('p');
-        $qb->where('p.id = :id')->setParameters(array('id' => $id));
-
-        try { $rent= $qb->getQuery()->getResult(); }
-        catch(\Exception $e){ $error = "une erreur est survenue " . $e->getMessage(); }
-
-        // Passage de paramètres à ma vue index.html.twig
-        return array('error' => $error, "rent" => $rent);
-    }
-
-    public function setRent($idRent = 0)
-    {
-        $error = null;
-        $id = $this->$id;
-
-        if($idRent != 0) $id = $idRent;
-
-        $rent = loadRent($id);
-
-        try {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($rent);
-            $em->flush();
-        }catch(\Exception $e){
-            $error = "Une erreur est survenue : " . $e->getMessage();
-        }
-
-        // Passage de paramètres à ma vue index.html.twig
-        return array('error' => $error, "rent" => $rent);
-    }
 }

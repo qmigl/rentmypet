@@ -10,22 +10,23 @@ use home\loginBundle\Entity;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/admin")
+     * @Route("/admin/")
      * @Template()
      */
     public function indexAction()
     {
-        return array();
+        return array('error' => '');
     }
 
     /**
-     * @Route("/admin/gestionComptes")
+     * @Route("/admin/gestionComptes/")
      * @Template()
      */
     public function gestionComptesAction()
     {
         $repository = $this->getDoctrine()->getRepository('loginBundle:user');
         $allUsers = null;
+        $error = '';
         try{
             $allUsers = $repository->findAll();
         }
@@ -37,25 +38,14 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/admin/creerCompte")
-     * @Template()
-     */
-    public function creerCompteAction()
-    {
-        return array();
-    }
-
-    /**
-     * @Route("/admin/creerCompte")
+     * @Route("/admin/modifierCompte/{idUser}/")
      * @Template()
      */
     public function modifierCompteAction($idUser)
     {
-        $user = new user();
-        $user= $user>loadUser($idUser);
+        $user = $this->getDoctrine()->getRepository('loginBundle:user')->find($idUser);
 
-        if (null == $user)
-            $this->render("adminBundle:default:gestionComptes.html.twig",  array("error" => "idUser inexistant"));
-        return array("user" => $user);
+        if (null == $user) $this->render("adminBundle:default:gestionComptes.html.twig",  array('error' => 'idUser inexistant'));
+        return array('error' => '', "user" => $user);
     }
 }
