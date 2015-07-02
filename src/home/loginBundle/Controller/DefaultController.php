@@ -84,11 +84,9 @@ class DefaultController extends Controller
      */
     public function subscribeAction($rights = 2)
     {
-
         $error = null;
 
         if (count($_POST)>7){
-<<<<<<< HEAD
         // Création / récupération d'une entité.
         $user = new Entity\user();
         $user->setEmail($_POST["_username"]);
@@ -109,7 +107,6 @@ class DefaultController extends Controller
         } catch (\Exception $e) {
             $error = "une erreur est survenue :" . $e->getMessage();
         }
-=======
             // Création / récupération d'une entité.
             $user = new Entity\user();
             $user->setEmail($_POST["_username"]);
@@ -131,7 +128,6 @@ class DefaultController extends Controller
                 $error = "une erreur est survenue :" . $e->getMessage();
             }
             return $this->render("loginBundle:Secured:connect.html.twig", array('user' => $user) );
->>>>>>> 5e91a1a10cde982f757d8763d658feaae076c3ae
         }
 
         // Passage de paramètres à ma vue index.html.twig
