@@ -31,7 +31,6 @@ class DefaultController extends Controller
         } else {
             return $this->render("loginBundle:default:login.html.twig", array('error' => "Veuillez vous connecter"));
         }
-
     }
 
 

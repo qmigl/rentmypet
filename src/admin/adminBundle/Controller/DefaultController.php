@@ -10,15 +10,6 @@ use home\loginBundle\Entity;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        return array('error' => '');
-    }
-
-    /**
      * @Route("/admin/")
      * @Template()
      */
