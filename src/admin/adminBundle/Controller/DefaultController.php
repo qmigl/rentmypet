@@ -10,7 +10,7 @@ use home\loginBundle\Entity;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/admin/")
      * @Template()
      */
     public function indexAction()

@@ -9,17 +9,18 @@
         <header>
             <div class="container_12" >
                 <div class="grid_12" >
-                    <h1><a href="/"><img src="bundles/rentmypet/images/header.png"></a></h1>
+                    <h1><a href="/"><img src={{ asset('bundles/rentmypet/images/header.png') }}></a></h1>
                 </div>
             </div>
             <nav>
                 <div class="container_12">
                     <div class="grid_12">
                         <ul class="sf-menu">
-                            <li class="current"><a href="/">Accueil</a></li>
+                            <li class="current"><a href="/secured/index">Accueil</a></li>
                             <li><a href="/#">Location</a></li>
                             <li><a href="/login">S'identifier</a></li>
                             <li><a href="/subscribe">S'enregistrer</a></li>
+                            <li><a href="/#">Mon Compte</a></li>
                         </ul>
                         <div class="clear"></div>
                     </div>
@@ -28,22 +29,21 @@
         </header>
     {% endblock %}
 
-
     <div id="content">
         <div class="slider-relative">
             <div class="slider-block">
                 <div class="slider">
                     <ul class="items">
-                        <li><img src="bundles/rentmypet/images/slider-1.jpg" alt="">
+                        <li><img src="{{ asset('bundles/rentmypet/images/slider-1.jpg') }}" alt="">
                             <div class="banner">Un monde de diversité s'offre à vous</div>
                         </li>
-                        <li><img src="bundles/rentmypet/images/slider-2.jpg" alt="">
+                        <li><img src="{{ asset('bundles/rentmypet/images/slider-2.jpg') }}" alt="">
                             <div class="banner">Une réservation simple</div>
                         </li>
-                        <li><img src="bundles/rentmypet/images/slider-3.jpg" alt="">
+                        <li><img src="{{ asset('bundles/rentmypet/images/slider-3.jpg') }}" alt="">
                             <div class="banner">Tenter l'éxotisme</div>
                         </li>
-                        <li><img src="bundles/rentmypet/images/slider-4.jpg" alt="">
+                        <li><img src="{{ asset('bundles/rentmypet/images/slider-4.jpg') }}" alt="">
                             <div class="banner">La douceur d'un lapin</div>
                         </li>
                     </ul>
@@ -53,7 +53,7 @@
         <div class="container_12">
             <div class="grid_3 box-1">
                 <div class="wrap">
-                    <img src="bundles/rentmypet/images/page1-img1.png" alt="">
+                    <"{{ asset('bundles/rentmypet/images/page1-img1.png') }}" alt="">
                     <h4>Sécurité</h4>
                 </div>
                 Vous pouvez louer votre animal en toute sécurité grace à Rent My Pet.
@@ -91,7 +91,7 @@
                                 <li>
                                     <img src="bundles/rentmypet/images/page1-img5.jpg" alt="">
                                     <h4>Les chats</h4>
-                                   Ils sont petits et mignons et vous pourrez passer des heures à jouer avec eux et à les caliner. Cependant Rent My Pet vous met en garde : tous dégâts sur la tapisserie n'est pas pris en charge. <br>
+                                    Ils sont petits et mignons et vous pourrez passer des heures à jouer avec eux et à les caliner. Cependant Rent My Pet vous met en garde : tous dégâts sur la tapisserie n'est pas pris en charge. <br>
                                     <a href="#" class="btn">more</a>
                                 </li>
                                 <li>
@@ -148,5 +148,5 @@
             </div>
         </div>
     </div>
-<h1>{{ error }}</h1>
+    <h1>{{ error }}</h1>
 {% endblock %}

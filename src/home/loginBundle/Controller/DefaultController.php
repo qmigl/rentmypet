@@ -66,7 +66,7 @@ class DefaultController extends Controller
                 if ($user->comparePass($_POST["_password"])) {
                     $session = new Session();
                     $session->set('name', $_POST["_username"]);
-                    return $this->render("loginBundle:Secured:index.html.twig", array('user' => $user));
+                    return $this->render("loginBundle:Secured:index.html.twig", array('user' => $user, 'error' => $error));
                 } else {
                     $error = ("Le mot de passe est erroné");
                 }
@@ -106,7 +106,7 @@ class DefaultController extends Controller
             } catch (\Exception $e) {
                 $error = "une erreur est survenue :" . $e->getMessage();
 
-                return $this->render("loginBundle:Secured:index_secured.html.twig", array('user' => $user));
+                return $this->render("loginBundle:Secured:index.html.twig", array('user' => $user));
             }
 
 
