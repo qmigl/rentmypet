@@ -42,7 +42,40 @@ class SecuredController extends Controller
         //On initialise la variable error a nul pour ne pas avoir de message d'erreur
         $session = new session;
         $session->invalidate();
-        return $this->render("loginBundle:default:index.html.twig", array('error' => ""));
+        return $this->redirect('/');
+    }
+
+    /**
+     * @Route("/secured/ajouterPet")
+     * @Template()
+     */
+    public function ajouterPetAction($rights = 2)
+    {
+        $error = null;
+        //on insert les valeurs en post dans l'objet $user
+        if (count($_POST) > 3) {
+            // Création / récupération d'une entité.
+            $pet = new Entity\pet();
+            $pet->setName($_POST["_petName"]);
+            $pet->setBirthdate($_POST["_birthDate"]);
+            $pet->setDescription($_POST["_description"]);
+            $pet->setSex($_POST["_sex"]);
+
+            try {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($pet);
+                $em->flush();
+                $error = "animal ajouté";
+            } catch (\Exception $e) {
+                $error = "une erreur est survenue :" . $e->getMessage();
+
+                return $this->render("loginBundle:Secured:index.html.twig", array('user' => $user));
+            }
+
+
+
+        }
+        return array('error' => $error);
     }
 
 }
