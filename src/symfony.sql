@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.1.4
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 03 Juillet 2015 à 11:50
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Généré le :  Ven 03 Juillet 2015 à 12:36
+-- Version du serveur :  5.6.15-log
+-- Version de PHP :  5.5.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -35,9 +35,16 @@ CREATE TABLE IF NOT EXISTS `pet` (
   `sex` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `idOwner` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UNIQ_E4529B855697F554` (`id_category`),
-  UNIQUE KEY `UNIQ_E4529B85D8A4A561` (`idOwner`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  UNIQUE KEY `UNIQ_E4529B85D8A4A561` (`idOwner`),
+  UNIQUE KEY `UNIQ_E4529B855697F554` (`id_category`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `pet`
+--
+
+INSERT INTO `pet` (`id`, `name`, `birthdate`, `description`, `id_category`, `sex`, `idOwner`) VALUES
+(1, 'Skanie', '2015-01-12', 'Samoyède', 1, 'Femelle', 1);
 
 -- --------------------------------------------------------
 
@@ -49,7 +56,17 @@ CREATE TABLE IF NOT EXISTS `pet_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+
+--
+-- Contenu de la table `pet_category`
+--
+
+INSERT INTO `pet_category` (`id`, `type`) VALUES
+(1, 'Chien'),
+(2, 'Chat'),
+(3, 'Phoque'),
+(4, 'Chèvre');
 
 -- --------------------------------------------------------
 
@@ -68,7 +85,14 @@ CREATE TABLE IF NOT EXISTS `rent` (
   UNIQUE KEY `UNIQ_2784DCC374B6834` (`pet_owner_id`),
   UNIQUE KEY `UNIQ_2784DCC7156C41` (`pet_renter_id`),
   UNIQUE KEY `UNIQ_2784DCC966F7FB6` (`pet_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `rent`
+--
+
+INSERT INTO `rent` (`id`, `dateStart`, `dateEnd`, `pet_owner_id`, `pet_renter_id`, `pet_id`) VALUES
+(1, '2015-07-03', '2015-07-31', 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -88,22 +112,16 @@ CREATE TABLE IF NOT EXISTS `user` (
   `adress` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `rights` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `firstName`, `lastName`, `phone`, `idLocation`, `city`, `adress`, `rights`) VALUES
-(1, 'admin@rentmypet.com', 'azerty', 'admin', 'admin', '0604060406', 69, 'Lyon', 'Avenue de Gerland', 1),
-(3, 'test@danstoncul.fr', '123456', 'Yoan', 'Lévy', '0606060606', 69, 'Ferme ta chatte', 'test', 2),
-(4, 'migliore@test.fr', '123', 'Quentin', 'Migliore', '0605020304', 1, 'Lyon ça race', '19 avenue de ton cul', 2),
-(5, 'test@email.fr', '123', 'uhaeh', 'Test', '0605080705', 15, 'Tombouctou', '25 Rue de la chèvre', 2),
-(6, 'yoman01660@hotmail.fr', 'aze', 'YOAN', 'LEVY', '+33652555620', 1, 'BOURG EN BRESSE', '19 Avenue du mail', 2),
-(7, 'yoman01660@hotmail.fr', 'aze', 'YOAN', 'LEVY', '+33652555620', 1, 'BOURG EN BRESSE', '19 Avenue du mail', 2),
-(8, 'yoman01660@hotmail.fr', 'aze', 'YOAN', 'LEVY', '+33652555620', 1, 'BOURG EN BRESSE', '19 Avenue du mail', 2),
-(9, 'yoman01660@hotmail.fr', 'aze', 'YOAN', 'LEVY', '+33652555620', 1, 'BOURG EN BRESSE', '19 Avenue du mail', 2),
-(10, 'azer@test.com', 'azerty', 'Juif', 'Tamer', '0605080907', 56, 'Montaubant', '14 avenue de la vieille', 2);
+(1, 'admin@rentmypet.com', 'azerty', 'admin', 'admin', '06590105055', 69, 'Lyon', 'Avenue de Gerland', 1),
+(3, 'test@danstoncul.fr', '123456', 'Yoan', 'Lévy', '0601162032', 69, 'Ferme ta chatte', 'test', 2),
+(4, 'migliore@test.fr', '123', 'Quentin', 'Migliore', '0605020304', 1, 'Lyon ça race', '19 avenue de ton cul', 2);
 
 --
 -- Contraintes pour les tables exportées
@@ -113,8 +131,8 @@ INSERT INTO `user` (`id`, `email`, `password`, `firstName`, `lastName`, `phone`,
 -- Contraintes pour la table `pet`
 --
 ALTER TABLE `pet`
-  ADD CONSTRAINT `FK_E4529B85D8A4A561` FOREIGN KEY (`idOwner`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `FK_E4529B855697F554` FOREIGN KEY (`id_category`) REFERENCES `pet_category` (`id`);
+  ADD CONSTRAINT `FK_E4529B855697F554` FOREIGN KEY (`id_category`) REFERENCES `pet_category` (`id`),
+  ADD CONSTRAINT `FK_E4529B85D8A4A561` FOREIGN KEY (`idOwner`) REFERENCES `user` (`id`);
 
 --
 -- Contraintes pour la table `rent`
