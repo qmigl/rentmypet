@@ -12,6 +12,17 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class DefaultController extends Controller
 {
+    public function checkSession()
+    {
+        //Cette fonction sert à vérfier que l'utilisateur est connecté
+        $session = new session();
+        if ($session->isStarted()) {
+            return $this->render("loginBundle:Secured:login.html.twig", array('error' => ""));
+        } else {
+            return false;
+        }
+    }
+
     /**
      * @Route("/")
      * @Template()
@@ -19,20 +30,10 @@ class DefaultController extends Controller
     public function indexAction()
     {
         //On initialise la variable error a nul pour ne pas avoir de message d'erreur
+        $this->checkSession();
         return array('error' => null);
     }
 
-    public function checkSession()
-    {
-        //Cette fonction sert à vérfier que l'utilisateur est connecté
-        $session = new session();
-        if ($session->isStarted()) {
-            return true;
-        } else {
-            return $this->render("loginBundle:default:login.html.twig", array('error' => "Veuillez vous connecter"));
-        }
-
-    }
 
 
     /**
@@ -106,7 +107,7 @@ class DefaultController extends Controller
             } catch (\Exception $e) {
                 $error = "une erreur est survenue :" . $e->getMessage();
 
-                return $this->render("loginBundle:Secured:index.html.twig", array('user' => $user));
+                return $this->render("loginBundle:Secured:index.html.twig", array('user' => $user,'error' => $error));
             }
 
 
