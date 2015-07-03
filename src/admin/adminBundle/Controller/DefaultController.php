@@ -13,6 +13,15 @@ class DefaultController extends Controller
      * @Route("/admin/")
      * @Template()
      */
+    public function indexAction()
+    {
+        return array('error' => '');
+    }
+
+    /**
+     * @Route("/admin/")
+     * @Template()
+     */
     public function indexAdminAction()
     {
         return array('error' => '');
