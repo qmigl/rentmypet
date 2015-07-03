@@ -34,6 +34,38 @@ class SecuredController extends Controller
 
     }
 
+    /**
+     * @Route("/monCompte/")
+     * @Template()
+     */
+    public function monCompteAction()
+    {
+
+        //On initialise la variable error a nul pour ne pas avoir de message d'erreur
+        return array('error' => '');
+    }
+
+    /**
+     * @Route("/monCompte/gestionPets")
+     * @Template()
+     */
+    public function gestionPetsAction()
+    {
+
+        //On initialise la variable error a nul pour ne pas avoir de message d'erreur
+        return array('error' => '');
+    }
+
+    /**
+     * @Route("/monCompte/ajouterPet")
+     * @Template()
+     */
+    public function ajouterPetAction()
+    {
+
+        //On initialise la variable error a nul pour ne pas avoir de message d'erreur
+        return array('error' => '');
+    }
 }
 
 

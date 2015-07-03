@@ -110,18 +110,4 @@ class DefaultController extends Controller
         }
         return array('error' => $error);
     }
-
-    /**
-     * @Route("/")
-     * @Template()
-     */
-    public function monCompteAction()
-    {
-
-        //On initialise la variable error a nul pour ne pas avoir de message d'erreur
-        return array('error' => '');
-    }
 }
-
-
-

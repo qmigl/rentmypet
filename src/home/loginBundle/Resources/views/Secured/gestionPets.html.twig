@@ -1,0 +1,144 @@
+{% extends 'loginBundle::layout.html.twig' %}
+
+{% block title %}RentMyPet - Welcome{% endblock %}
+
+
+{% block content %}
+    {% block header %}
+
+        <header>
+            <div class="container_12" >
+                <div class="grid_12" >
+                    <h1><a href="/"><img src={{ asset('bundles/rentmypet/images/header.png') }}></a></h1>
+                </div>
+            </div>
+            <nav>
+                <div class="container_12">
+                    <div class="grid_12">
+                        <ul class="sf-menu">
+                            <li class="current"><a href="/secured/index">Accueil</a></li>
+                            <li><a href="/#">Location</a></li>
+                            <li><a href="/login">S'identifier</a></li>
+                            <li><a href="/subscribe">S'enregistrer</a></li>
+                            <li><a href="/#">Mon Compte</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    {% endblock %}
+    <div id="content" align="center">
+        <p><table>
+            <tr><br />
+                <td><a href="/monCompte/gestionPets/" title="Gérer mes Pets">Gérer mes Pets</a></td>
+            </tr>
+
+            <tr>
+                <td><a href="/monCompte/ajouterPet/" title="Ajouter un Pet">Ajouter un Pet</a></td>
+            </tr>
+
+        </table></p>
+
+        <a href="/admin/" alt="" >Retour</a>
+
+        <div class="container_12">
+            <div class="grid_3 box-1">
+                <div class="wrap">
+                    <"{{ asset('bundles/rentmypet/images/page1-img1.png') }}" alt="">
+                    <h4>Sécurité</h4>
+                </div>
+                Vous pouvez louer votre animal en toute sécurité grace à Rent My Pet.
+            </div>
+            <div class="grid_3 box-1">
+                <div class="wrap">
+                    <img src="bundles/rentmypet/images/page1-img2.png" alt="">
+                    <h4>Professionnels</h4>
+                </div>
+                Toute notre équipe de professionnel est à votre disposition 5jours/7.
+            </div>
+            <div class="grid_3 box-1">
+                <div class="wrap">
+                    <img src="bundles/rentmypet/images/page1-img3.png" alt="">
+                    <h4>Experience</h4>
+                </div>
+                Avec nos 3 ans d'éxperience nous sommes le leader européen de la location d'animaux.
+            </div>
+            <div class="grid_3 box-1">
+                <div class="wrap">
+                    <img src="bundles/rentmypet/images/page1-img4.png" alt="">
+                    <h4>Hotline</h4>
+                </div>
+                Une Hotline est disponible si vous souhaitez entretenir une première conversation avec l'animal avant de le louer.
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="bg-1">
+            <div class="container_12">
+                <div class="grid_12">
+                    <div class="carousel">
+                        <a href="#" class="prev1"></a><a href="#" class="next1"></a>
+                        <div class="carousel_div">
+                            <ul class="carousel1">
+                                <li>
+                                    <img src="bundles/rentmypet/images/page1-img5.jpg" alt="">
+                                    <h4>Les chats</h4>
+                                    Ils sont petits et mignons et vous pourrez passer des heures à jouer avec eux et à les caliner. Cependant Rent My Pet vous met en garde : tous dégâts sur la tapisserie n'est pas pris en charge. <br>
+                                    <a href="#" class="btn">more</a>
+                                </li>
+                                <li>
+                                    <img src="bundles/rentmypet/images/page1-img6.jpg" alt="">
+                                    <h4>Les chèvres</h4>
+                                    Les chèvres sont reconnus en chine pour leurs vertues térapeutiques<br>
+                                    <a href="#" class="btn">more</a>
+                                </li>
+                                <li>
+                                    <img src="bundles/rentmypet/images/page1-img7.jpg" alt="">
+                                    <h4>Les phoques</h4>
+                                    Les phoques nécessitent un équipement aquatique chez soi et quelques sardiines mais une fois dépasser les besoins matériel vous passerez un moment magique en leur compagnie.<br>
+                                    <a href="#" class="btn">more</a>
+                                </li>
+                                <li>
+                                    <img src="bundles/rentmypet/images/page1-img8.jpg" alt="">
+                                    <h4>Les chiens</h4>
+                                    Plutôt classique, le chien est le meilleur ami de l'homme et il pourra vous le prouver au cours de balades et autres activités.<br>
+                                    <a href="#" class="btn">more</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-2">
+            <div class="container_12">
+                <div class="grid_7">
+                    <div class="border-1">
+                        <h2 class="indent-1">A propos ...</h2>
+                        <div class="wrap box-2">
+                            <img src="bundles/rentmypet/images/page1-img9.jpg" alt="">
+                            <p class="text-info">Rent my pet - Infos utiles </p>
+                            <p>La location d'animaux est notre passion depuis toujours. Du hamster à l'ornithorinque vous trouverez forcément votre bonheur.</p>
+                            Louer un animal est une démarche écologique et pratique qui vous permet de profiter de la compagnie de l'animal de votre choix et pour une durée définie.<br>
+                            <a href="#" class="btn">more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid_5">
+                    <h2 class="indent-1">Dernières nouvelles</h2>
+                    <ul class="list-news">
+                        <li>
+                            <div class="wrap">
+                                <div class="badge">01<span>Juillet</span></div>
+                                <span class="text-info">Découverte de symfony 2</span><br>
+                                <a href="#">Juillet 01.007.15</a>
+                            </div>
+                            On découvre avec Romuald les grands principes de Symfony 2 et je dois avouer que c'est galère.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1>{{ error }}</h1>
+{% endblock %}
