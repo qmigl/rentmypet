@@ -43,14 +43,12 @@ class pet
     private $description;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_category", type="integer")
+     * @ORM\OneToOne(targetEntity="pet_category")
+     * @ORM\JoinColumn(name="id_category", referencedColumnName="id")
      */
     private $idCategory;
 
     /**
-     * @var string
      *
      * @ORM\Column(name="sex", type="string", length=255)
      */
