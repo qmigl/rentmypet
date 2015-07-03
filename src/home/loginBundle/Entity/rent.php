@@ -36,23 +36,20 @@ class rent
     private $dateEnd;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="pet_owner_id", type="integer")
+     * @ORM\OneToOne(targetEntity="user")
+     * @ORM\JoinColumn(name="pet_owner_id", referencedColumnName="id")
      */
     private $petOwnerId;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="pet_renter_id", type="integer")
+     * @ORM\OneToOne(targetEntity="user")
+     * @ORM\JoinColumn(name="pet_renter_id", referencedColumnName="id")
      */
     private $petRenterId;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="pet_id", type="integer")
+     * @ORM\OneToOne(targetEntity="pet")
+     * @ORM\JoinColumn(name="pet_id", referencedColumnName="id")
      */
     private $petId;
 
