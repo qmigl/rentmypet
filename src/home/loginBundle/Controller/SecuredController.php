@@ -45,13 +45,16 @@ class SecuredController extends Controller
         $session = new session;
         $session->invalidate();
         return $this->redirect('/');
+        //On redirige vers l'accueil
     }
 
     /**
      * @Route("/secured/ajouterPet")
      * @Template()
      */
-    public function ajouterPetAction($rights = 2)
+
+    //On a créer la fonction ajouter un animal mais elle ne fonctionne pas car on  a pas eu le temps de finir la récupération automatique de l'ID de l'utilisateur connecté
+    public function ajouterPetAction()
     {
         $this->checkSession();
 
@@ -64,6 +67,7 @@ class SecuredController extends Controller
             $pet->setBirthdate($_POST["_birthDate"]);
             $pet->setDescription($_POST["_description"]);
             $pet->setSex($_POST["_sex"]);
+            $pet->setIdOwner('1');
 
             try {
                 $em = $this->getDoctrine()->getManager();
@@ -73,7 +77,7 @@ class SecuredController extends Controller
             } catch (\Exception $e) {
                 $error = "une erreur est survenue :" . $e->getMessage();
 
-                return $this->render("loginBundle:Secured:index.html.twig", array('user' => $user));
+                return $this->render("loginBundle:Secured:index.html.twig", array('pet' => $pet, 'error' => $error));
             }
 
 
