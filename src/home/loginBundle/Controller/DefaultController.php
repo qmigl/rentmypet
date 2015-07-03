@@ -31,6 +31,7 @@ class DefaultController extends Controller
         } else {
             return $this->render("loginBundle:default:login.html.twig", array('error' => "Veuillez vous connecter"));
         }
+
     }
 
 
@@ -107,7 +108,13 @@ class DefaultController extends Controller
 
                 return $this->render("loginBundle:Secured:index.html.twig", array('user' => $user));
             }
+
+
+
         }
         return array('error' => $error);
     }
 }
+
+
+

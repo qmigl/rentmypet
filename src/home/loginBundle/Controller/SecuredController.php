@@ -31,41 +31,20 @@ class SecuredController extends Controller
         } else {
             return $this->render("loginBundle:default:login.html.twig", array('error' => "Veuillez vous connecter"));
         }
-
     }
 
     /**
-     * @Route("/monCompte/")
+     * @Route("/secured/disconnect")
      * @Template()
      */
-    public function monCompteAction()
+    public function disconnectAction()
     {
-
         //On initialise la variable error a nul pour ne pas avoir de message d'erreur
-        return array('error' => '');
+        $session = new session;
+        $session->invalidate();
+        return $this->render("loginBundle:default:index.html.twig", array('error' => ""));
     }
 
-    /**
-     * @Route("/monCompte/gestionPets")
-     * @Template()
-     */
-    public function gestionPetsAction()
-    {
-
-        //On initialise la variable error a nul pour ne pas avoir de message d'erreur
-        return array('error' => '');
-    }
-
-    /**
-     * @Route("/monCompte/ajouterPet")
-     * @Template()
-     */
-    public function ajouterPetAction()
-    {
-
-        //On initialise la variable error a nul pour ne pas avoir de message d'erreur
-        return array('error' => '');
-    }
 }
 
 
