@@ -31,7 +31,18 @@ class SecuredController extends Controller
         } else {
             return $this->render("loginBundle:default:login.html.twig", array('error' => "Veuillez vous connecter"));
         }
+    }
 
+    /**
+     * @Route("/secured/disconnect")
+     * @Template()
+     */
+    public function disconnectAction()
+    {
+        //On initialise la variable error a nul pour ne pas avoir de message d'erreur
+        $session = new session;
+        $session->invalidate();
+        return $this->render("loginBundle:default:index.html.twig", array('error' => ""));
     }
 
 }
