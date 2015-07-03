@@ -58,9 +58,9 @@ class pet
 
     /**
      * @ORM\OneToOne(targetEntity="user")
-     * @ORM\JoinColumn(name="emailOwner", referencedColumnName="email")
+     * @ORM\JoinColumn(name="idOwner", referencedColumnName="id")
      */
-    private $emailOwner;
+    private $idOwner;
 
     /**
      * Get id
@@ -188,22 +188,22 @@ class pet
     }
 
     /**
-     * Set email owner
+     * Set id owner
      *
-     * @param string $emailOwner
+     * @param string $idOwner
      * @return pet
      */
 
-    public function setEmailOwner($emailOwner){
-        $this->emailOwner = $emailOwner;
+    public function setIdOwner($idOwner){
+        $this->$idOwner = $idOwner;
     }
 
     /**
-     * Get email owner
+     * Get id owner
      *
      * @return string
      */
-    public function getEmailOwner(){
-        return $this->emailOwner;
+    public function getIdOwner(){
+        return $this->idOwner;
     }
 }
