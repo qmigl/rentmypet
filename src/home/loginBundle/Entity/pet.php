@@ -57,7 +57,7 @@ class pet
     private $sex;
 
     /**
-     * @ORM\OneToOne(targetEntity='user')
+     * @ORM\OneToOne(targetEntity="user")
      * @ORM\JoinColumn(name="emailOwner", referencedColumnName="email")
      */
     private $emailOwner;
