@@ -10,20 +10,13 @@ use home\loginBundle\Entity;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/admin/")
+     * @Route("/admin/{idUser}")
      * @Template()
      */
-    public function indexAction()
+    public function indexAdminAction($idUser)
     {
-        return array('error' => '');
-    }
-
-    /**
-     * @Route("/admin/")
-     * @Template()
-     */
-    public function indexAdminAction()
-    {
+        $user = $this->getDoctrine()->getRepository('loginBundle:user')->find($idUser);
+        if($user == null) return $this->render("loginBundle:Default:login.html.twig", array('error' => ''));
         return array('error' => '');
     }
 

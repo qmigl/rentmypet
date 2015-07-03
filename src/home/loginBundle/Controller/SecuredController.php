@@ -18,6 +18,8 @@ class SecuredController extends Controller
      */
     public function indexAction()
     {
+        $this->checkSession();
+
         //On initialise la variable error a nul pour ne pas avoir de message d'erreur
         return array('error' => null);
     }
@@ -51,6 +53,8 @@ class SecuredController extends Controller
      */
     public function ajouterPetAction($rights = 2)
     {
+        $this->checkSession();
+
         $error = null;
         //on insert les valeurs en post dans l'objet $user
         if (count($_POST) > 3) {
@@ -78,6 +82,30 @@ class SecuredController extends Controller
         return array('error' => $error);
     }
 
+    /**
+     * @Route("/secured/gestionPets")
+     * @Template()
+     */
+    public function gestionPetsAction()
+    {
+        $this->checkSession();
+
+        $repository = $this->getDoctrine()->getRepository('loginBundle:pet');
+        $qb = $repository->createQueryBuilder('u');
+        $qb->where('u.idOwner = :owner')
+            ->setParameters(array('owner' => '1'));
+
+        $pets = null;
+        $error = '';
+        try{
+            $pets = $repository->findAll();
+        }
+        catch(\Exception $e)
+        {
+            $error = "Une erreur est survenue " . $e->getMessage();
+        }
+        return array('error' => $error, 'pets' => $pets);
+    }
 }
 
 

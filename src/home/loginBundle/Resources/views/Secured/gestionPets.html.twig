@@ -33,14 +33,11 @@
     {% endblock %}
     <div id="content" align="center">
         <p><table>
-            <tr><br />
-                <td><a href="/monCompte/gestionPets/" title="Gérer mes Pets">Gérer mes Pets</a></td>
-            </tr>
-
-            <tr>
-                <td><a href="/monCompte/ajouterPet/" title="Ajouter un Pet">Ajouter un Pet</a></td>
-            </tr>
-
+            {% for pet in pets %}
+                <tr>
+                    <td><a href="/admin/modifierPet/{{ pet.id }}/" alt="" >{{ pet.name }}</a></td>
+                </tr>
+            {% endfor %}
         </table></p>
 
         <a href="/admin/" alt="" >Retour</a>
